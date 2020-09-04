@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"fmt"
 	"image"
-	"log"
 
 	"github.com/hajimehoshi/ebiten"
 )
@@ -45,7 +44,7 @@ func (sp *SpriteRenderer) Draw(screen *ebiten.Image) error {
 func NewSpriteRenderer(texture []byte, container *GameObject, anchor RenderPositions) *SpriteRenderer {
 	img, _, err := image.Decode(bytes.NewReader(texture))
 	if err != nil {
-		log.Fatal(err)
+		panic(fmt.Sprintf("Error while parsing sprite: %v", err.Error()))
 	}
 	screen, err := ebiten.NewImageFromImage(img, ebiten.FilterDefault)
 	if err != nil {
