@@ -40,7 +40,6 @@ func (g *Gameloop) Layout(outsideWidth, outsideHeight int) (screenWidth, screenH
 
 func NewGame(screenWidth, screenHeight int, name string) *Gameloop {
 	game := &Gameloop{}
-
 	windowHeight = screenHeight
 	windowWidth = screenWidth
 	windowName = name
