@@ -1,10 +1,10 @@
 package sh2d
 
 import (
+	"bytes"
 	"fmt"
 	"image"
 	"log"
-	"os"
 
 	"github.com/hajimehoshi/ebiten"
 )
@@ -42,18 +42,17 @@ func (sp *SpriteRenderer) Draw(screen *ebiten.Image) error {
 }
 
 //NewSpriteRenderer creates a new sprite renderer
-func NewSpriteRenderer(texturePath string, container *GameObject, anchor RenderPositions) *SpriteRenderer {
-	textureBytes, err := os.Open(texturePath)
-	img, _, err := image.Decode(textureBytes)
+func NewSpriteRenderer(texture []byte, container *GameObject, anchor RenderPositions) *SpriteRenderer {
+	img, _, err := image.Decode(bytes.NewReader(texture))
 	if err != nil {
 		log.Fatal(err)
 	}
-	texture, err := ebiten.NewImageFromImage(img, ebiten.FilterDefault)
+	screen, err := ebiten.NewImageFromImage(img, ebiten.FilterDefault)
 	if err != nil {
-		panic(fmt.Sprintf("Texture with path %v not found", texturePath))
+		panic(fmt.Sprintf("Texture with path %v not found", texture))
 	}
 	return &SpriteRenderer{
-		Texture:   texture,
+		Texture:   screen,
 		container: container,
 		Anchor:    &anchor,
 	}
