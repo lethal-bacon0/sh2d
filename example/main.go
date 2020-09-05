@@ -4,8 +4,8 @@ import (
 	"log"
 
 	"github.com/hajimehoshi/ebiten"
-	"github.com/lethal-bacon0/Asteroid/asteroids"
 	"github.com/lethal-bacon0/sh2d"
+	"github.com/lethal-bacon0/sh2d/example/asteroids"
 )
 
 const (

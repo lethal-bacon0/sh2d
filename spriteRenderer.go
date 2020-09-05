@@ -28,9 +28,9 @@ func (sp *SpriteRenderer) Draw(screen *ebiten.Image) error {
 	w, h := sp.Texture.Size()
 	RotateAtCenter(&renderPos, sp.container.Rotation, float64(w), float64(h))
 	switch *sp.Anchor {
-	case LEFT:
+	case TopLeft:
 		renderPos.Translate(sp.container.Position.X, sp.container.Position.Y)
-	case CENTER:
+	case CenterCenter:
 		center := sp.GetAbsCenter()
 		renderPos.Translate(center.X, center.Y)
 	}
@@ -57,6 +57,7 @@ func NewSpriteRenderer(texture []byte, container *GameObject, anchor RenderPosit
 	}
 }
 
+//GetAbsCenter gets centered absolute coordinates
 func (sp *SpriteRenderer) GetAbsCenter() Vector2D {
 	w, h := sp.Texture.Size()
 	return Vector2D{
@@ -65,6 +66,7 @@ func (sp *SpriteRenderer) GetAbsCenter() Vector2D {
 	}
 }
 
+//GetRelCenter gets centered relative coordinates
 func (sp *SpriteRenderer) GetRelCenter() Vector2D {
 	w, h := sp.Texture.Size()
 	return Vector2D{
@@ -73,9 +75,21 @@ func (sp *SpriteRenderer) GetRelCenter() Vector2D {
 	}
 }
 
+//GetAbsTopCenter gets absolute coordinates of top center
+func (sp *SpriteRenderer) GetAbsTopCenter() Vector2D {
+	w, _ := sp.Texture.Size()
+	return Vector2D{
+		X: sp.container.Position.X - float64(w/2),
+		Y: sp.container.Position.Y,
+	}
+}
+
+//RenderPositions defines anchor positions
 type RenderPositions string
 
 const (
-	CENTER RenderPositions = "CENTER"
-	LEFT   RenderPositions = "LEFT"
+	//CenterCenter center of sprite
+	CenterCenter RenderPositions = "CENTER"
+	//TopLeft topleft of sprite
+	TopLeft RenderPositions = "LEFT"
 )
