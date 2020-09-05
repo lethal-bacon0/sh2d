@@ -1,4 +1,4 @@
-package asteroids
+package bullet
 
 import (
 	"fmt"
@@ -26,7 +26,7 @@ func NewBullet(position sh2d.Vector2D, rotation float64, direction sh2d.Vector2D
 	}
 
 	bullet.AddComponent(sh2d.NewSpriteRenderer(bulletTexture, bullet, sh2d.CenterCenter))
-	bullet.AddComponent(NewSpriteMover(bullet, direction, bulletVelocity))
+	bullet.AddComponent(sh2d.NewSpriteMover(bullet, direction, bulletVelocity))
 
 	return bullet
 }
