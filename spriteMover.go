@@ -4,7 +4,7 @@ import (
 	"github.com/hajimehoshi/ebiten"
 )
 
-//SpriteMover moves a sprite
+//SpriteMover moves a sprite by a given velocity to a defined direction
 type SpriteMover struct {
 	container *GameObject
 	direction Vector2D

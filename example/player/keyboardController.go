@@ -1,6 +1,8 @@
 package player
 
 import (
+	"time"
+
 	"github.com/hajimehoshi/ebiten"
 	"github.com/lethal-bacon0/sh2d"
 	"github.com/lethal-bacon0/sh2d/example/bullet"
@@ -11,15 +13,21 @@ import (
 type keyboardController struct {
 	isShooting bool
 	container  *sh2d.GameObject
+	lastShot   time.Time
+	firingRate int64
 }
 
 func (k *keyboardController) Update() error {
+	const firingThreshhold = 9
 	k.isShooting = false
 
 	if ebiten.IsKeyPressed(settings.Shoot0) || ebiten.IsMouseButtonPressed(settings.Shoot1) {
-		k.shoot()
+		timeDelta := time.Now().Sub(k.lastShot)
+		if timeDelta.Milliseconds() >= k.firingRate {
+			k.shoot()
+			k.lastShot = time.Now() //TODO: firing rate feels kinda hacky
+		}
 	}
-
 	return nil
 }
 
@@ -49,6 +57,7 @@ func (k *keyboardController) shoot() {
 
 func newKeyboardController(container *sh2d.GameObject) *keyboardController {
 	return &keyboardController{
-		container: container,
+		container:  container,
+		firingRate: 99,
 	}
 }
