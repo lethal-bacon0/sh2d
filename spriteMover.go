@@ -12,10 +12,10 @@ type SpriteMover struct {
 }
 
 //Update moves a sprite
-func (b *SpriteMover) Update() error {
+func (b *SpriteMover) Update(delta int64) error {
 	vel := Vector2D{
-		X: b.direction.X * b.velocity,
-		Y: b.direction.Y * b.velocity,
+		X: b.direction.X * b.velocity * float64(delta),
+		Y: b.direction.Y * b.velocity * float64(delta),
 	}
 
 	pos := b.container.Position.Add(vel)

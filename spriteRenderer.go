@@ -17,7 +17,7 @@ type SpriteRenderer struct {
 }
 
 //Update updates the component.
-func (sp *SpriteRenderer) Update() error {
+func (sp *SpriteRenderer) Update(delta int64) error {
 	return nil
 }
 

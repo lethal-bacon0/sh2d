@@ -11,7 +11,7 @@ import (
 func NewBullet(position sh2d.Vector2D, rotation float64, direction sh2d.Vector2D) *sh2d.GameObject {
 	const (
 		bulletTexturePath = "resources/player/Minigun_Large_png_processed.png"
-		bulletVelocity    = 10
+		bulletVelocity    = 0.9
 	)
 
 	bullet := &sh2d.GameObject{

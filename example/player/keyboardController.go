@@ -17,7 +17,7 @@ type keyboardController struct {
 	firingRate int64
 }
 
-func (k *keyboardController) Update() error {
+func (k *keyboardController) Update(delta int64) error {
 	const firingThreshhold = 9
 	k.isShooting = false
 

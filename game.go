@@ -1,6 +1,8 @@
 package sh2d
 
 import (
+	"time"
+
 	"github.com/hajimehoshi/ebiten"
 	"github.com/hajimehoshi/ebiten/ebitenutil"
 )
@@ -9,11 +11,16 @@ import (
 type Gameloop struct {
 }
 
+var delta int64
+var previousTime time.Time
+
 // Update proceeds the game state.
 // Update is called every tick (1/60 [s] by default).
 func (g *Gameloop) Update(screen *ebiten.Image) error {
+	delta = time.Now().Sub(previousTime).Milliseconds()
+	previousTime = time.Now()
 	for _, element := range activeScene.SceneElements {
-		err := element.Update()
+		err := element.Update(delta)
 		if err != nil {
 			ebitenutil.DebugPrint(screen, err.Error())
 		}

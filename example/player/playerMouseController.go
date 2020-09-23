@@ -15,7 +15,7 @@ type mouseController struct {
 }
 
 //Update updates the controller every frame
-func (c *mouseController) Update() error {
+func (c *mouseController) Update(delta int64) error {
 	x, y := ebiten.CursorPosition()
 	c.position = &sh2d.Vector2D{
 		X: float64(x),

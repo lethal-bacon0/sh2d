@@ -4,6 +4,6 @@ import "github.com/hajimehoshi/ebiten"
 
 //Component asd
 type Component interface {
-	Update() error
+	Update(delta int64) error
 	Draw(screen *ebiten.Image) error
 }

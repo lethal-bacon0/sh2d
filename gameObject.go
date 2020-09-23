@@ -38,9 +38,9 @@ func (g *GameObject) GetComponent(withType Component) Component {
 }
 
 //Update updates all conmponents
-func (g *GameObject) Update() error {
+func (g *GameObject) Update(delta int64) error {
 	for _, component := range g.Components {
-		err := component.Update()
+		err := component.Update(delta)
 		if err != nil {
 			return err
 		}
