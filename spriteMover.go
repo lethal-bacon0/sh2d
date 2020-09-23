@@ -11,6 +11,7 @@ type SpriteMover struct {
 	velocity  float64
 }
 
+//Update moves a sprite
 func (b *SpriteMover) Update() error {
 	vel := Vector2D{
 		X: b.direction.X * b.velocity,
@@ -27,6 +28,7 @@ func (b *SpriteMover) Update() error {
 	return nil
 }
 
+//Draw Draw
 func (b *SpriteMover) Draw(screen *ebiten.Image) error {
 
 	return nil
