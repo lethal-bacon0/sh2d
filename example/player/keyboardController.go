@@ -7,6 +7,7 @@ import (
 	"github.com/lethal-bacon0/sh2d"
 	"github.com/lethal-bacon0/sh2d/example/bullet"
 	"github.com/lethal-bacon0/sh2d/example/settings"
+	"github.com/lethal-bacon0/sh2d/geometry2d"
 )
 
 //KeyboardController handles player movement
@@ -38,13 +39,13 @@ func (k *keyboardController) Draw(screen *ebiten.Image) error {
 func (k *keyboardController) shoot() {
 	var (
 		mouseX, mouseY  int
-		mousePos        sh2d.Vector2D
-		bulletDirection sh2d.Vector2D
+		mousePos        geometry2d.Vector2D
+		bulletDirection geometry2d.Vector2D
 	)
 
 	k.isShooting = true
 	mouseX, mouseY = ebiten.CursorPosition()
-	mousePos = sh2d.Vector2D{
+	mousePos = geometry2d.Vector2D{
 		X: float64(mouseX),
 		Y: float64(mouseY),
 	}

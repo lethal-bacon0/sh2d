@@ -5,11 +5,12 @@ import (
 	"reflect"
 
 	"github.com/hajimehoshi/ebiten"
+	"github.com/lethal-bacon0/sh2d/geometry2d"
 )
 
 //GameObject is a generic type all elements in the game should inherit
 type GameObject struct {
-	Position   Vector2D
+	Position   geometry2d.Vector2D
 	Rotation   float64
 	Active     bool
 	Components []Component

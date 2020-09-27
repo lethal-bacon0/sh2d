@@ -5,25 +5,27 @@ import (
 
 	"github.com/hajimehoshi/ebiten"
 	"github.com/lethal-bacon0/sh2d"
+	"github.com/lethal-bacon0/sh2d/comp2d"
+	"github.com/lethal-bacon0/sh2d/geometry2d"
 )
 
 //mouseController handles mouse input for the player
 type mouseController struct {
 	container *sh2d.GameObject
-	position  *sh2d.Vector2D
-	sprite    *sh2d.SpriteRenderer
+	position  *geometry2d.Vector2D
+	sprite    *comp2d.SpriteRenderer
 }
 
 //Update updates the controller every frame
 func (c *mouseController) Update(delta int64) error {
 	x, y := ebiten.CursorPosition()
-	c.position = &sh2d.Vector2D{
+	c.position = &geometry2d.Vector2D{
 		X: float64(x),
 		Y: float64(y),
 	}
 
 	if c.sprite == nil {
-		c.sprite = c.container.GetComponent(&sh2dcomp.SpriteRenderer{}).(*sh2dcomp.SpriteRenderer)
+		c.sprite = c.container.GetComponent(&comp2d.SpriteRenderer{}).(*comp2d.SpriteRenderer)
 	}
 	dx := c.container.Position.X - c.position.X
 	dy := c.container.Position.Y - c.position.Y

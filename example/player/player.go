@@ -4,11 +4,13 @@ import (
 	"fmt"
 
 	"github.com/lethal-bacon0/sh2d"
+	"github.com/lethal-bacon0/sh2d/comp2d"
 	"github.com/lethal-bacon0/sh2d/example/assets"
+	"github.com/lethal-bacon0/sh2d/geometry2d"
 )
 
 //NewPlayer creates a new player game object
-func NewPlayer(position sh2d.Vector2D) *sh2d.GameObject {
+func NewPlayer(position geometry2d.Vector2D) *sh2d.GameObject {
 	const (
 		playerSize        = 1
 		playerTexturePath = "resources/player/PlayerRed_Frame_01_png_processed.png"
@@ -26,7 +28,7 @@ func NewPlayer(position sh2d.Vector2D) *sh2d.GameObject {
 	}
 
 	player.AddComponent(newPlayerMouseController(player))
-	player.AddComponent(sh2dcomp.NewSpriteRenderer(playerTexture, player, sh2dcomp.CenterCenter))
+	player.AddComponent(comp2d.NewSpriteRenderer(playerTexture, player, comp2d.CenterCenter))
 	player.AddComponent(newKeyboardController(player))
 
 	return player

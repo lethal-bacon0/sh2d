@@ -6,6 +6,7 @@ import (
 	"github.com/hajimehoshi/ebiten"
 	"github.com/lethal-bacon0/sh2d"
 	"github.com/lethal-bacon0/sh2d/example/player"
+	"github.com/lethal-bacon0/sh2d/geometry2d"
 )
 
 const (
@@ -16,7 +17,7 @@ const (
 func main() {
 	game := sh2d.NewGame(screenWidth, screenHeight, "Asteroid")
 	scene := sh2d.Scene{}
-	scene.AddChild(player.NewPlayer(sh2d.Vector2D{X: screenWidth / 2, Y: screenHeight / 2}))
+	scene.AddChild(player.NewPlayer(geometry2d.Vector2D{X: screenWidth / 2, Y: screenHeight / 2}))
 	sh2d.SetActiveScene(&scene)
 	if err := ebiten.RunGame(game); err != nil {
 		log.Fatal(err)
