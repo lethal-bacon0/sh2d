@@ -26,7 +26,7 @@ func NewPlayer(position sh2d.Vector2D) *sh2d.GameObject {
 	}
 
 	player.AddComponent(newPlayerMouseController(player))
-	player.AddComponent(sh2d.NewSpriteRenderer(playerTexture, player, sh2d.CenterCenter))
+	player.AddComponent(sh2dcomp.NewSpriteRenderer(playerTexture, player, sh2dcomp.CenterCenter))
 	player.AddComponent(newKeyboardController(player))
 
 	return player

@@ -23,7 +23,7 @@ func (c *mouseController) Update(delta int64) error {
 	}
 
 	if c.sprite == nil {
-		c.sprite = c.container.GetComponent(&sh2d.SpriteRenderer{}).(*sh2d.SpriteRenderer)
+		c.sprite = c.container.GetComponent(&sh2dcomp.SpriteRenderer{}).(*sh2dcomp.SpriteRenderer)
 	}
 	dx := c.container.Position.X - c.position.X
 	dy := c.container.Position.Y - c.position.Y
