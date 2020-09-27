@@ -53,3 +53,15 @@ func NewTimer(elapsedCallback func(), autoReset bool, interval time.Duration) *T
 	}
 	return &timer
 }
+
+//NewTimerSingleStart creates and starts a new timer to execute once
+func NewTimerSingleStart(elapsedCallback func(), interval time.Duration) *Timer {
+	timer := NewTimer(elapsedCallback, false, interval)
+	timer.Start()
+	return timer
+}
+
+//NewTimerSingle creates a new timer that executes once.(Start manually)
+func NewTimerSingle(elapsedCallback func(), interval time.Duration) *Timer {
+	return NewTimer(elapsedCallback, false, interval)
+}

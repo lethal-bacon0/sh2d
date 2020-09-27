@@ -1,9 +1,11 @@
 package player
 
 import (
+	"fmt"
 	"time"
 
 	"github.com/hajimehoshi/ebiten"
+	"github.com/hajimehoshi/ebiten/ebitenutil"
 	"github.com/lethal-bacon0/sh2d"
 	"github.com/lethal-bacon0/sh2d/example/bullet"
 	"github.com/lethal-bacon0/sh2d/example/settings"
@@ -33,6 +35,7 @@ func (k *keyboardController) Update(delta int64) error {
 }
 
 func (k *keyboardController) Draw(screen *ebiten.Image) error {
+	ebitenutil.DebugPrint(screen, fmt.Sprintf("FPS: %v", ebiten.CurrentFPS()))
 	return nil
 }
 
